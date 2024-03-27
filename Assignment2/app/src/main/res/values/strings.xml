@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Assignment2</string>
+    <string name="ratings">Ratings</string>
+    <string name="restaurant_name">Restaurant Name</string>
+    <string name="location">Location</string>
+    <string name="phone">Phone</string>
+    <string name="description">Description</string>
+</resources>
