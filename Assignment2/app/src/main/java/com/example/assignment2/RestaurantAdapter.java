@@ -51,7 +51,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
         TextView tvContactName, tvPhone, tvLocation, tvDescription, tvRating;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvContactName = itemView.findViewById(R.id.tvContactName);
+            tvContactName = itemView.findViewById(R.id.tvName);
             tvPhone = itemView.findViewById(R.id.tvPhone);
             tvLocation = itemView.findViewById(R.id.tvLocation);
             tvDescription = itemView.findViewById(R.id.tvDescription);
