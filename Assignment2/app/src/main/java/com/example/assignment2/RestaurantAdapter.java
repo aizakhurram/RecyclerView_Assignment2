@@ -1,5 +1,6 @@
 package com.example.assignment2;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +18,11 @@ import java.util.ArrayList;
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.ViewHolder> {
 
     ArrayList<Restaurant> restaurants;
+    private ArrayList<Restaurant> filteredList;
     public RestaurantAdapter(ArrayList<Restaurant> list)
     {
         restaurants = list;
+        filteredList = new ArrayList<>();
     }
 
     @NonNull
@@ -34,16 +37,22 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.tvContactName.setText(restaurants.get(position).getName());
-        holder.tvPhone.setText(restaurants.get(position).getPhone());
-        holder.tvLocation.setText(restaurants.get(position).getLocation());
-        holder.tvDescription.setText(restaurants.get(position).getLocation());
-        holder.tvRating.setText(restaurants.get(position).getRating());
+        Restaurant restaurant = filteredList.get(position);
+        holder.tvContactName.setText(restaurant.getName());
+        holder.tvPhone.setText(restaurant.getPhone());
+        holder.tvLocation.setText(restaurant.getLocation());
+        holder.tvDescription.setText(restaurant.getDescription());
+        holder.tvRating.setText(restaurant.getRating());
+    }
+    public void filterList(ArrayList<Restaurant> filteredList) {
+        this.filteredList.clear();
+        this.filteredList.addAll(filteredList);
+        notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return restaurants.size();
+        return this.filteredList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder

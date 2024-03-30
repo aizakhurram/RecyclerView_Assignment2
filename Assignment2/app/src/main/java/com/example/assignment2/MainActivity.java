@@ -7,9 +7,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -18,9 +22,10 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView rvRestaurants;
     RestaurantAdapter myAdapter;
     ArrayList<Restaurant> list;
-    Button btnAddNewRestaurant ,btnRegister;
-    EditText etName, etLocation, etRating, etPhone, etDescription;
+    Button btnAddNewRestaurant ,btnRegister, btnSearch;
+    EditText etName, etLocation, etRating, etPhone, etDescription, etSearch;
     View register;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +35,11 @@ public class MainActivity extends AppCompatActivity {
         init();
 
         rvRestaurants.setHasFixedSize(true);
+
+        // Initialize adapter with the original list
         myAdapter = new RestaurantAdapter(list);
 
         rvRestaurants.setLayoutManager(new LinearLayoutManager(this));
-        //rvChats.setLayoutManager(new GridLayoutManager(this,4));
         rvRestaurants.setAdapter(myAdapter);
 
         loadDataFromSharedPreferences();
@@ -41,17 +47,21 @@ public class MainActivity extends AppCompatActivity {
         btnAddNewRestaurant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(MainActivity.this, Registration.class);
                 startActivity(intent);
                 finish();
             }
         });
 
-
-
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String query = etSearch.getText().toString().trim();
+                Log.d("MainActivity", "Search query: " + query);
+                filterList(query);
+            }
+        });
     }
-
     private void init()
     {
         list = new ArrayList<>();
@@ -62,7 +72,23 @@ public class MainActivity extends AppCompatActivity {
 
         rvRestaurants = findViewById(R.id.rvRestaurants);
         btnAddNewRestaurant = findViewById(R.id.btnAddNewRestaurant);
+        etSearch = findViewById(R.id.etSearch);
 
+        btnSearch = findViewById(R.id.btnSearch);
+
+    }
+    private void filterList(String query) {
+        ArrayList<Restaurant> filteredList = new ArrayList<>();
+        for (Restaurant restaurant : list) {
+            if (restaurant.getName().toLowerCase().contains(query.toLowerCase()) ||
+                    restaurant.getLocation().toLowerCase().contains(query.toLowerCase()) ||
+                    restaurant.getRating().equals(query)) {
+
+                filteredList.add(restaurant);
+            }
+        }
+
+        myAdapter.filterList(filteredList);
     }
 
     private void loadDataFromSharedPreferences() {

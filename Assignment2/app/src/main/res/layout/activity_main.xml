@@ -12,6 +12,36 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+
+        tools:context=".MainActivity">
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/search"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:textSize="13sp"
+
+            />
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="75dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#27679B"
+            android:text="Search"
+            android:textSize="10sp"
+
+
+            />
+    </LinearLayout>
 
         <Button
             android:layout_width="match_parent"
