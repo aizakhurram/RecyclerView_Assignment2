@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="#7E4C9FDE">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        >
+        <TextView
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:text="@string/ratings"
+            android:textAlignment="center"
+            android:gravity="center_vertical"
+            android:id="@+id/tvRating"
+            />
+
+        <LinearLayout
+            android:layout_width="34dp"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+
+            android:paddingLeft="5dp">
+
+            <ImageView
+                android:id="@+id/IvContactName"
+                android:layout_width="30dp"
+                android:layout_height="18dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/person" />
+
+            <ImageView
+                android:id="@+id/IvLocation"
+                android:layout_width="30dp"
+                android:layout_height="18dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/location" />
+
+            <ImageView
+                android:id="@+id/IvPhone"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:src="@drawable/phone" />
+
+            <ImageView
+                android:id="@+id/IvDescription"
+                android:layout_width="30dp"
+                android:layout_height="18dp"
+
+                android:src="@drawable/description" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+
+            android:paddingLeft="5dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/restaurant_name"
+
+
+
+                android:id="@+id/tvName"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:text="@string/location"
+                android:id="@+id/tvLocation"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone"
+                android:id="@+id/tvPhone"
+                />
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/description" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:id="@+id/IvCall"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:src="@drawable/call" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:src="@drawable/message"
+                android:id="@+id/IvMsg"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
